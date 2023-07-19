@@ -1,8 +1,8 @@
 @if (Auth::check())
-    {{-- linktoviewalluser --}}
-    <li><a class="link link-hover" href="#">User</a></li>
+    {{-- link to view all user --}}
+    <li><a class="link link-hover" href="{{ route('user.index') }}">User</a></li>
     {{-- link to user details --}}
-    <li><a href="#" class="link link-hover">{{ Auth::user()->name }}&#39;s plofile</a></li>
+    <li><a href="{{ route('user.show',Auth::user()->id) }}" class="link link-hover">{{ Auth::user()->name }}&#39;s plofile</a></li>
     <li class="divider lg:hidden"></li>
     {{-- link to logout --}}
     <li><a href="#" class="link link-hover" onclick="event.preventDefault();this.closest('form').submit();">Logout</a></li>
