@@ -14,7 +14,7 @@
                     </div>
                     <div>
                     {{-- link to user details page --}}
-                    <p><a href="{{ route('user.show', $user->id) }}" class="link link-hovor text-info">View profile</a></p>
+                    <p><a href="{{ route('users.show', $user->id) }}" class="link link-hovor text-info">View profile</a></p>
                     </div>
                 </div>
             </li>

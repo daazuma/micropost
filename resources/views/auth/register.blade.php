@@ -39,6 +39,9 @@
             </div>
 
             <button type="submit" class="btn btn-primary btn-block normal-case">Sign up</button>
+            {{-- link to login page --}}
+        <p class="mt-2">already registerd? <a class="link link-hover text-info" href="{{ route('login') }}">click login here!!</a></p>
+
         </form>
     </div>
 @endsection
