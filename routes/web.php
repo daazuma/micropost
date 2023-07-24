@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\MicropostController;
+use App\Http\Controllers\UserFollowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,13 @@ Route::get('/dashboard', [MicropostController::class, 'index'])->middleware(['au
 require __DIR__.'/auth.php';
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::group(["prefix"=>"user/{id}"], function () {
+        Route::post('follow', [UserFollowController::class, "store"])->name("user.follow");
+        Route::delete('unfollow', [UserFollowController::class, "destroy"])->name("user.unfollow");
+        Route::get('followings', [UsersController::class, "followings"])->name("users.followings");
+        Route::get('followers', [UsersController::class, "followers"])->name("users.followers");
+    });
+
     Route::resource('users', UsersController::class, ['only' => ['index', 'show']]);
     Route::resource('microposts', MicropostController::class, ['only' => ['store', 'destroy']]);
 });

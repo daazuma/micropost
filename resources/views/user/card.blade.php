@@ -6,4 +6,6 @@
         {{-- viewGravatarfromusermailadress --}}
     </figure>
         <img src="{{ Gravatar::get($user->email, ['size'=>500 ]) }}" alt="">
+    {{-- follow /unfollow buttun --}}
+    @include("user_follow.follow_button")
 </div>

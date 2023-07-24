@@ -7,6 +7,8 @@
         @include('user.card')
     </aside>
     <div class="sm:col-span-2 mt-4">
+        {{-- tab --}}
+        @include("user.navtab")
         {{-- 投稿フォーム --}}
         @include('micropost.form')
         {{-- 投稿一覧 --}}
