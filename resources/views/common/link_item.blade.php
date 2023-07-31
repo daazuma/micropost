@@ -1,6 +1,6 @@
 @if (Auth::check())
     {{-- link to view all user --}}
-    <li><a class="link link-hover" href="{{ route("users.index") }}">User</a></li>
+    <li><a class="link link-hover" href="{{ route('users.index') }}">User</a></li>
     {{-- link to user details --}}
     <li><a href="{{ route('users.show',Auth::user()->id) }}" class="link link-hover">{{ Auth::user()->name }}&#39;s plofile</a></li>
     <li class="divider lg:hidden"></li>

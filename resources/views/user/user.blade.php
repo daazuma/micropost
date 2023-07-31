@@ -2,7 +2,7 @@
     <ul class="list-none">
         @foreach ($users as $user)
             <li class="flex items-center gap-x-2 mb-4">
-                {{-- viewGraatarfromusermailadress --}}
+                {{-- view Graatar from user mail adress --}}
                 <div class="acatar">
                     <div class="w-12 rounded">
                         <img src="{{ Gravatar::get($user->email) }}" alt="" />

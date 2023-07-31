@@ -56,7 +56,7 @@ class User extends Authenticatable
      */
     public function loadRelationshipCounts()
     {
-        $this->loadCount(['microposts',"followings","followers"]);
+        $this->loadCount(['microposts',"followings","followers","favorites"]);
     }
 
     public function followings()
@@ -124,5 +124,51 @@ class User extends Authenticatable
         $userIds[] = $this->id;
 
         return Micropost::whereIn("user_id",$userIds);
+    }
+
+    // /**
+    //  * The roles that belong to the User
+    //  *
+    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    //  */
+    // public function like_this(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(User::class, 'user_favorite', 'micropost_id', 'user_id');
+    // }
+
+    /**
+     * リレーション（多対多）
+     */
+    public function favorites()
+    {
+        return $this->belongsToMany(Micropost::class, 'user_favorite', 'user_id', 'micropost_id')->withTimestamps();
+    }
+
+    public function is_favorite($postId)
+    {
+        return $this->favorites()->where("micropost_id",$postId)->exists();
+    }
+
+    public function like($postId)
+    {
+        if ($this->is_favorite($postId)){
+            return false;
+        }
+        else{
+            $this->favorites()->attach($postId);
+            return true;
+        }
+
+    }
+
+    public function unlike($postId)
+    {
+        if ($this->is_favorite($postId)){
+            $this->favorites()->detach($postId);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

@@ -35,7 +35,7 @@
                 <label for="password_confirmation" class="label">
                     <span class="label-text">Confirmation</span>
                 </label>
-                <input type="text" name="password_confirmation" class="input input-bordered w-full">
+                <input type="password" name="password_confirmation" class="input input-bordered w-full">
             </div>
 
             <button type="submit" class="btn btn-primary btn-block normal-case">Sign up</button>
